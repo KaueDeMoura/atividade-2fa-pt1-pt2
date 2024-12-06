@@ -1,5 +1,6 @@
 <?php
 require 'vendor/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php'; 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -29,6 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
+            $mail->Username = $_ENV['MAIL_USERNAME'];
+            $mail->Password = $_ENV['MAIL_PASSWORD'];
             $mail->Username = 'atv2fa@gmail.com';
             $mail->Password = 'adzd llee aled xnlt';
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
